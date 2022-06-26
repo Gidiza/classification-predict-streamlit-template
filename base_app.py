@@ -27,7 +27,8 @@ import joblib,os
 
 # Data dependencies
 import pandas as pd
-
+import matplotlib.pyplot as plt
+#%matplotlib inline
 # Vectorizer
 news_vectorizer = open("resources/vector.pkl","rb")
 tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
@@ -41,12 +42,17 @@ def main():
 
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
-	st.title("Tweet Classifer")
+	col1, mid, col2 = st.columns([40,1,40])
+	with col1:
+    
+		st.title("Tweet Classifer")
+	with col2:
+		st.image('twitter.webp', width=80)
 	st.subheader("Climate change tweet classification")
 
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
-	options = ["Prediction", "Information"]
+	options = ["Prediction", "Information", "Development Team"]
 	selection = st.sidebar.selectbox("Choose Option", options)
 
 	# Building out the "Information" page
@@ -58,6 +64,9 @@ def main():
 		st.subheader("Raw Twitter data and label")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
 			st.write(raw[['sentiment', 'message']]) # will write the df to the page
+			st.write('Show sentiment occurance dataset')
+			xx = raw['sentiment'].value_counts()
+			st.bar_chart(xx)
 
 	# Building out the predication page
 	if selection == "Prediction":
@@ -79,6 +88,8 @@ def main():
 			prediction_dic =  {-1:"Anti: the tweet does not believe in man-made climate change", 0:"Neutral: the tweet neither supports nor refutes the belief of man-made climate change",
 			1:"Pro: the tweet supports the belief of man-made climate change", 2:"News: the tweet links to factual news about climate change"}
 			st.success("Text Categorized as: {}".format(prediction_dic[prediction[0]]))
+	if selection == "Development Team":
+		st.title("Meet our team")
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
