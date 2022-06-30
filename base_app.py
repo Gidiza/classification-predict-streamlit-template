@@ -65,25 +65,13 @@ def main():
 	#selection = st.sidebar.selectbox("Choose Option", options)
 
 	# Building out the "Information" page
-	if selection == "Information 2":
-		st.info("General Information")
-		# You can read a markdown file from supporting resources folder
-		st.markdown("Some information here")
 
-		st.subheader("Raw Twitter data and label")
-		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
-			st.write(raw[['sentiments', 'message']]) # will write the df to the page
-			st.write('Show sentiment occurance dataset')
-			xx = raw['sentiments'].value_counts()
-			st.bar_chart(xx)
 
 	# Building out the predication page
 	if selection == "Home":
-		col1, mid, col2 = st.columns([40,1,20])
-		with col1:
-			st.subheader("Tweet classifier for climate change tweet classification")
-		with col2:
-			st.image('twitter.webp', width=80)
+		
+		st.subheader("Tweet classifier for climate change tweet classification")
+	
 
 		st.info("Prediction with ML Models")
 		# Creating a text box for user input
@@ -162,7 +150,7 @@ def main():
 		st.subheader("Raw Twitter data and label")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
 			
-			st.write(raw[['sentiments', 'message']]) # will write the df to the page
+			st.write(raw[['sentiments', 'message']].head()) # will write the df to the page
 
 			opt = st.radio('Plot  type:',['Bar', 'Pie', 'Word Cloud'])
 			if opt=='Bar':
