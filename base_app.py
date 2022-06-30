@@ -108,7 +108,7 @@ def main():
 		st.title("")
 		col1, mid, col2 = st.columns([80,10,80])
 		with col2:
-			st.subheader("Gwetha Nkosi - Project Manager")
+			st.subheader("Gwetha Nkosi - CEO of Intellect Data")
 			st.write("Gcwetha Nkosi has worked as a Project Manager, Product Manager, Systems and Production developer. When he is not coding he enjoys watching sport on television.")
 		with col1:
 			st.image('nkosi2.jpeg', width=380)
