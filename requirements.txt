@@ -1,5 +1,5 @@
 streamlit_option_menu==0.3.2
 matplotlib
 streamlit_option_menu
-worldcloud==1.8.2.2
+wordcloud==1.8.2.2
 pandas
